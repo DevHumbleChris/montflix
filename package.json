@@ -1,0 +1,33 @@
+{
+  "name": "montflix",
+  "version": "1.0.0",
+  "description": "more than just a movie app.",
+  "main": "app.js",
+  "scripts": {
+    "run": "node app.js",
+    "start": "node app.js",
+    "montflix": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DevHumbleChris/montflix.git"
+  },
+  "author": "Am.Chris_KE",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DevHumbleChris/montflix/issues"
+  },
+  "homepage": "https://github.com/DevHumbleChris/montflix#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "colors": "^1.4.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "pug": "^3.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
