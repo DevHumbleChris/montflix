@@ -1,10 +1,13 @@
 require("colors");
-require("dotenv/config");
+require("dotenv").config();
+const axios = require("axios")
 
 module.exports = {
-    index: (req, res) => {
-        res.render("index", {
-            message: "Welcome To Montflix"
+    index: async (req, res) => {
+        const response = await axios.get(process.env.MOVIES_POPULAR)
+        const popularMovies = response.data
+        res.render("index",{
+            popularMovies,
         })
     }
 }

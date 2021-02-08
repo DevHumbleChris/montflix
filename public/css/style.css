@@ -1,5 +1,5 @@
 /* @ Google Fonts. */
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Chango&family=Fascinate+Inline&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Chango&family=Fascinate+Inline&family=Ubuntu:wght@300&display=swap');
 
 * {
     margin: 0;
@@ -23,7 +23,7 @@ body{
     font-family: 'Fascinate Inline', cursive;
 }
 .banner {
-    height: 50vh;
+    height: 45vh;
     width: 100%;
     opacity: 0.9;
 }
@@ -47,4 +47,46 @@ body{
 }
 .subtitle{
     font-family: 'Anton', sans-serif;
+}
+.input-search{
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+#basic-addon2{
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.form{
+    width: 70%;
+}
+.popular-tag,.tag-info{
+    font-family: 'Ubuntu', sans-serif;
+}
+.popular-tag{
+    color: red;
+}
+.whatsPopularInTheatres{
+    padding: 15px;
+    /* background: ; */
+}
+.flex-items{
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 100%;
+    height: 310px;
+    padding: 7px;
+}
+.movie-card{
+    padding: 5px;
+    border-radius: 10px;
+    margin-left: 10px;
+}
+.movie-img-card{
+    width: 150px;
+}
+.movie-img-card img{
+    width: 100%;
+    border-radius: 10px;
 }

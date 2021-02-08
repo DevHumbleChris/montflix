@@ -8,3 +8,19 @@ block content
                     span(class="title") Montflix
                     | .
                 p(class="card-text subtitle") More than just movies and Tv shows. Explore Now.
+                div(class="form mt-2")
+                    form(method="POST" action="#")
+                        div(class="input-group mb-3")
+                            input(type="text" class="form-control input-search" placeholder="Search for a movie / tv show..." aria-label="searchValue" aria-describedby="basic-addon2" name="searchValue")
+                            button( type="submit" class="input-group-text search-btn btn-success" id="basic-addon2") Search
+    div(class="whatsPopularInTheatres")
+        div(class="h3 tag-info") What's Popular 
+            span(class="popular-tag") In Theatres
+            | .
+        div(class="flex-items")
+            each movie in popularMovies.results
+                div(class="movie-card")
+                    div(class="movie-img-card")
+                        img(src=`https://image.tmdb.org/t/p/w500/${movie.poster_path}`, alt="")
+                    div(class="card-text")= movie.title
+                    div(class="card-text")= movie.release_date
