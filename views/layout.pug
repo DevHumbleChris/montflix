@@ -10,5 +10,34 @@ html(lang="en")
         link(rel="stylesheet", href="https://cdn.lineicons.com/2.0/LineIcons.css")
         script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js") 
         title Montflix
-    body 
+    body
+        nav(class="navbar navbar-expand-lg navbar-light bg-light")
+            div(class="container-fluid")
+                a(class="navbar-brand" href="#") Montflix
+                button(class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation")
+                    span(class="navbar-toggler-icon")
+                div(class="collapse navbar-collapse" id="navbarNavDropdown")
+                    ul(class="navbar-nav")
+                        li(class="nav-item dropdown")
+                            a(class="nav-link" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false") Movies
+                            ul(class="dropdown-menu")
+                                li
+                                    a(class="dropdown-item" href="#") Popular
+                                li
+                                    a(class="dropdown-item" href="#") Now Playing
+                                li
+                                    a(class="dropdown-item" href="#") Upcoming
+                                li
+                                    a(class="dropdown-item" href="#") Top Rated
+                        li(class="nav-item dropdown")
+                            a(class="nav-link" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false") Tv Shows
+                            ul(class="dropdown-menu")
+                                li
+                                    a(class="dropdown-item" href="#") Popular
+                                li
+                                    a(class="dropdown-item" href="#") Airing Today
+                                li
+                                    a(class="dropdown-item" href="#") On Tv
+                                li
+                                    a(class="dropdown-item" href="#") Top Rated
     block content
