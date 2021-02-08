@@ -1,0 +1,50 @@
+/* @ Google Fonts. */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Chango&family=Fascinate+Inline&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background:#FBF8D7;
+}
+
+.bg-color{
+    background: #18223C;
+}
+.drop-color, #navbarDropdownMenuLink{
+    color: #06F9BA;
+}
+#text-color{
+    font-size: 28px;
+    color: #06F9BA;
+    font-family: 'Fascinate Inline', cursive;
+}
+.banner {
+    height: 50vh;
+    width: 100%;
+    opacity: 0.9;
+}
+
+.welcome-container{
+    padding: 10px;
+    margin-left: 10px;
+}
+.outer-container{
+    margin-top: 70px;
+}
+.title{
+    color: #06F9BA;
+    font-family: 'Fascinate Inline', cursive;
+}
+.info, .subtitle{
+    color: white;
+}
+.info{
+    font-family: 'Chango', cursive;
+}
+.subtitle{
+    font-family: 'Anton', sans-serif;
+}
