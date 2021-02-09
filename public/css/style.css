@@ -65,7 +65,7 @@ body{
 .popular-tag{
     color: red;
 }
-.whatsPopularInTheatres, .whatsPopularOnTv{
+.whatsPopularInTheatres, .whatsPopularOnTv, .latestTrailersInTheatres{
     padding: 15px;
     /* background: red; */
 }
@@ -89,6 +89,9 @@ body{
 .movie-img-card{
     width: 150px;
 }
+.decoration-none{
+    text-decoration: none;
+}
 .movie-img-card img{
     width: 100%;
     border-radius: 10px;
@@ -103,6 +106,7 @@ body{
 .on-tv-text-color, .tv-text-color{
     color: #06F9BA;
 }
+
 /* @ Media Queries */
 
 @media only screen and (max-width: 480px){
