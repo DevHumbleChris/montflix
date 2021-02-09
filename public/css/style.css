@@ -1,5 +1,5 @@
 /* @ Google Fonts. */
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Chango&family=Fascinate+Inline&family=Ubuntu:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Big+Shoulders+Display:wght@800&family=Chango&family=Fascinate+Inline&family=Ubuntu:wght@300&display=swap');
 
 * {
     margin: 0;
@@ -23,8 +23,8 @@ body{
     font-family: 'Fascinate Inline', cursive;
 }
 .banner {
-    height: 45vh;
     width: 100%;
+    height: 45vh;
     opacity: 0.9;
 }
 
@@ -56,18 +56,21 @@ body{
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
 }
-.form{
+/* .form{
     width: 70%;
-}
+} */
 .popular-tag,.tag-info{
     font-family: 'Ubuntu', sans-serif;
 }
 .popular-tag{
     color: red;
 }
-.whatsPopularInTheatres{
+.whatsPopularInTheatres, .whatsPopularOnTv{
     padding: 15px;
-    /* background: ; */
+    /* background: red; */
+}
+.whatsPopularOnTv{
+    background-color: #18223C;
 }
 .flex-items{
     display: flex;
@@ -75,7 +78,7 @@ body{
     overflow-x: auto;
     overflow-y: hidden;
     width: 100%;
-    height: 310px;
+    height: 320px;
     padding: 7px;
 }
 .movie-card{
@@ -89,4 +92,24 @@ body{
 .movie-img-card img{
     width: 100%;
     border-radius: 10px;
+}
+.flex-items::-webkit-scrollbar-button{
+    background-color: green;
+}
+.movie-title, .movie-release-date{
+    font-size: 12px;
+    font-family: 'Big Shoulders Display', cursive;
+}
+.on-tv-text-color, .tv-text-color{
+    color: #06F9BA;
+}
+/* @ Media Queries */
+
+@media only screen and (max-width: 480px){
+    .form{
+        width: 100%
+    }
+    .flex-items::-webkit-scrollbar{
+        width: 0px;
+    }
 }

@@ -15,9 +15,9 @@ async function getImages(){
         console.log(dataLength)
         banner.style = `
                         background-image:url(${IMG_PATH}${data.results[randomPick].backdrop_path});
-                        background-repeat: no-repeat;
-                        background-attachment: fixed;  
                         background-size: cover;
+                        background-position: center;
+                        background-repeat: no-repeat;
                         `
     })
 }

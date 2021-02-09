@@ -22,5 +22,16 @@ block content
                 div(class="movie-card")
                     div(class="movie-img-card")
                         img(src=`https://image.tmdb.org/t/p/w500/${movie.poster_path}`, alt="")
-                    div(class="card-text")= movie.title
-                    div(class="card-text")= movie.release_date
+                    div(class="card-text movie-title")= movie.title
+                    div(class="card-text movie-release-date")= movie.release_date
+    div(class="whatsPopularOnTv")
+        div(class="h3 tag-info on-tv-text-color") What's Popular 
+            span(class="popular-tag") On Tv
+            | .
+        div(class="flex-items")
+            each movie in popularOnTv.results
+                div(class="movie-card")
+                    div(class="movie-img-card")
+                        img(src=`https://image.tmdb.org/t/p/w500/${movie.poster_path}`, alt="")
+                    div(class="card-text movie-title tv-text-color")= movie.name
+                    div(class="card-text movie-release-date tv-text-color")= movie.first_air_date
