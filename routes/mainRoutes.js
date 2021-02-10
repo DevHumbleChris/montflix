@@ -8,6 +8,10 @@ const urlEncoded = bodyParser.urlencoded({
 
 route.get("/", mainControllers.index)
 
+route.get("/movie/:id", mainControllers.movieDetail)
+
+route.get("/tv/:id", mainControllers.tvDetail)
+
 route.post("/", urlEncoded)
 
 module.exports = route;
