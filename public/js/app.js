@@ -10,7 +10,7 @@ let dataLength, randomPick, response, responseData;
 const banner = document.querySelector(".banner");
 const movieDetailBanner = document.querySelector(".movie-detail-banner")
 
-if(banner){
+if(banner != null){
     // @ Banner Div Setup.
     async function getImages(){
         response = await fetch(TRENDING_TODAY)
@@ -31,7 +31,7 @@ if(banner){
     }
     getImages()
 }
-if(movieDetailBanner){
+if(movieDetailBanner != null){
     async function getDetailMovieImage(){
         const pathname = window.location.pathname
         const id = pathname.split("/")[2]
