@@ -53,3 +53,4 @@ if(movieDetailBanner != null){
     }
 }
 console.log(process.env.MOVIE_DETAIL_REST_URL)
+console.log(process.env.MOVIE_DETAIL_REST_URL)
