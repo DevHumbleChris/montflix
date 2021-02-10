@@ -30,7 +30,8 @@ if(banner){
         })
     }
     getImages()
-}else if(movieDetailBanner){
+}
+if(movieDetailBanner){
     async function getDetailMovieImage(){
         const pathname = window.location.pathname
         const id = pathname.split("/")[2]
