@@ -1,9 +1,8 @@
-import dotenv from "dotenv"
-
-dotenv.config()
-
 const IMG_PATH = "https://image.tmdb.org/t/p/w500"
 const TRENDING_TODAY = "https://api.themoviedb.org/3/trending/today/day?api_key=b9326276faf774560703e2e9152fa7e7"
+
+const MOVIE_DETAIL_URL = "https://api.themoviedb.org/3/movie/"
+const MOVIE_DETAIL_REST_URL = "?api_key=b9326276faf774560703e2e9152fa7e7&language=en-US"
 
 let dataLength, randomPick, response, responseData;
 
@@ -35,22 +34,19 @@ if(movieDetailBanner != null){
     async function getDetailMovieImage(){
         const pathname = window.location.pathname
         const id = pathname.split("/")[2]
-        response = await fetch(TRENDING_TODAY)
+        response = await fetch(`${MOVIE_DETAIL_URL}${id}${MOVIE_DETAIL_REST_URL}`)
         responseData = response.json()
 
         responseData.then( (data) => {
-            dataLength = data.results.length
-            randomPick = Math.floor(Math.random() * dataLength)
-            console.log(randomPick)
-            console.log(dataLength)
             movieDetailBanner.style = `
-                            background-image:url(${IMG_PATH}${data.results[randomPick].backdrop_path});
+                            background-image:url(${IMG_PATH}${data.poster_path});
                             background-size: cover;
                             background-position: center;
                             background-repeat: no-repeat;
                             `
+        console.log(data)
+            
         })
     }
+    getDetailMovieImage()
 }
-console.log(process.env.MOVIE_DETAIL_REST_URL)
-console.log(process.env.MOVIE_DETAIL_REST_URL)
