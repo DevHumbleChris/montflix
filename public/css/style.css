@@ -22,7 +22,7 @@ body{
     width: 60px;
     padding: 5px;
     position: fixed;
-    bottom: 0;
+    top: 40%;
     right: 0;
     margin-right: 10px;
     margin-bottom: 10px;
