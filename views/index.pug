@@ -22,7 +22,7 @@ block content
                 div(class="movie-card")
                     div(class="movie-img-card")
                         a(href=`/movie/${movie.id}/`)
-                            img(src=`https://image.tmdb.org/t/p/w500/${movie.poster_path}`, alt="")
+                            img(src=`https://image.tmdb.org/t/p/w500/${movie.poster_path || movie.backdrop_path}`, alt=`${movie.title}`)
                     div(class="card-text movie-title")
                         a(href=`/movie/${movie.id}/` class="decoration-none")= movie.title
                     div(class="card-text movie-release-date")= movie.release_date
@@ -35,7 +35,7 @@ block content
                 div(class="movie-card")
                     div(class="movie-img-card")
                         a(href=`/tv/${movie.id}/`)
-                            img(src=`https://image.tmdb.org/t/p/w500/${movie.poster_path}`, alt="")
+                            img(src=`https://image.tmdb.org/t/p/w500/${movie.poster_path || movie.backdrop_path}`, alt=`${movie.name}`)
                     div(class="card-text movie-title")
                         a(href=`/tv/${movie.id}/` class="decoration-none tv-text-color")= movie.name
                     div(class="card-text movie-release-date tv-text-color")= movie.first_air_date

@@ -2,4 +2,32 @@ extends layout
 
 block content
     div(class="movie-detail-banner container-fluid")
-        div(class="")
+        div(class="movie-container")
+            div(class="movie-img")
+                img(src=`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`, alt="")
+            div(class="movie-info")
+                div(class="movie-detail-title") #{movieDetails.title}
+                    - const capturedDate = new Date(movieDetails.release_date)
+                    - let year = capturedDate.getFullYear()
+                        span(class="yr-released")  ( #{year} )
+                div(class="genres-time") 
+                    i #{movieDetails.status}
+                    span()  #{movieDetails.release_date} 
+                    - let genresArray = []
+                    - movieDetails.genres.map( (genre) => { genresArray.push(genre.name)})
+                    - let genre = genresArray.join(", ")
+                        span(class="genres")  #{genre}
+                div(class="video-movie-links mt-2 mb-2")
+                    a(href=`${movieDetails.homepage}`) 
+                        div(class="avatar-icon text-center")
+                            i(class="fas fa-link text-primary mt-3")
+                    div(class="margin-ryt")
+                        a(href="" class="btn trailer-btn btn-outline-primary mt-2") 
+                            i(class="")
+                            span(class="") Play Trailer
+                    //- div(class="trailer-video")
+                        //- iframe(width="320" height="250" src=`https://www.youtube.com/embed/${youTubeKey}`)
+                div(class="tagline") #{movieDetails.tagline}
+                div(class="overview") Overview
+                div(class="overview-description") #{movieDetails.overview}
+
