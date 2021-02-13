@@ -59,7 +59,6 @@ module.exports = {
                 movieCredits,
                 youTubeKey: key[0] || results[0].key
             })
-            console.log(key[0] ?? results[0].key)
 
         }catch(err){
             console.log("Error Occurred While Fetching The Data")
@@ -69,12 +68,23 @@ module.exports = {
     tvDetail: async (req, res) => {
         const id = req.params.id
 
-        // @ Get Tv Details. 
-        const responseTvDetails = await axios.get(`${process.env.TV_DETAILS_URL}${id}${process.env.TV_DETAILS_REST_URL}`)
-        const TvDetails = responseTvDetails.data
+        try{
+            // @ Get Tv Details. 
+            const responseTvDetails = await axios.get(`${process.env.TV_DETAILS_URL}${id}${process.env.TV_DETAILS_REST_URL}`)
+            const TvDetails = responseTvDetails.data
 
-        res.render("tv_detail", {
-            TvDetails,
-        })
+            // @ Get Aggregate Credits. 
+            const responseAggregateCredits = await axios.get(`${process.env.AGGREGATE_CREDITS}${id}${process.env.AGG_CREDIT_URL}`)
+            const tvCredits =responseAggregateCredits.data
+    
+            res.render("tv_detail", {
+                TvDetails,
+                tvCredits
+            })
+
+        }catch(err){
+            console.log(err.message)
+        }
+        console.log(`${process.env.AGGREGATE_CREDITS}${id}${process.env.AGG_CREDIT_URL}`)
     }
 }

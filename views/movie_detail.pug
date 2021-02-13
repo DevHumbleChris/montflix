@@ -30,4 +30,31 @@ block content
         div(class="tagline") #{movieDetails.tagline}
         div(class="overview") Overview
         div(class="overview-description") #{movieDetails.overview}
-
+    div(class="topMoviesBilledCast")
+        div(class="h3 tag-info on-tv-text-color") Top 
+            span(class="popular-tag") Billed Cast
+            | .
+        div(class="flex-items")
+            each cast in movieCredits.cast
+                div(class="movie-card")
+                    div(class="movie-img-card")
+                        - let profile_path = cast.profile_path
+                        - let apiImage = `https://image.tmdb.org/t/p/w500${profile_path}`
+                        - let avatarImage = "https://mir-s3-cdn-cf.behance.net/project_modules/disp/629c1f14015191.5627be627c443.png"
+                        - let displayImage = profile_path == null ? avatarImage : apiImage
+                        img(src=`${displayImage}` alt=`${cast.name}`)
+                    div(class="card-text movie-title tv-text-color text-center mt-1")= cast.name
+                    div(class="card-text movie-release-date tv-text-color text-danger text-center mt-1")= cast.character
+    div(class="similarMovies")
+        div(class="h3 tag-info") Similar 
+            span(class="popular-tag") Movies
+            | .
+        div(class="flex-items")
+            each movie in similarMovies.results
+                div(class="movie-card")
+                    div(class="movie-img-card")
+                        a(href=`/movie/${movie.id}/`)
+                            img(src=`https://image.tmdb.org/t/p/w500/${movie.poster_path || movie.backdrop_path}`, alt=`${movie.title}`)
+                    div(class="card-text movie-title")
+                        a(href=`/movie/${movie.id}/` class="decoration-none")= movie.title
+                    div(class="card-text movie-release-date")= movie.release_date

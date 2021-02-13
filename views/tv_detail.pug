@@ -29,3 +29,39 @@ block content
         div(class="tagline") #{TvDetails.tagline}
         div(class="overview") Overview
         div(class="overview-description") #{TvDetails.overview}
+    div(class="topTvBilledCast")
+        div(class="h3 tag-info on-tv-text-color") Top 
+            span(class="popular-tag") Series Cast
+            | .
+        div(class="flex-items tvCast")
+            - for(let count = 0; count <= 30; count++)
+                div(class="movie-card")
+                    div(class="movie-img-card")
+                        - let profile_path = tvCredits.cast[count].profile_path
+                        - let apiImage = `https://image.tmdb.org/t/p/w500${profile_path}`
+                        - let avatarImage = "https://mir-s3-cdn-cf.behance.net/project_modules/disp/629c1f14015191.5627be627c443.png"
+                        - let displayImage = profile_path == null ? avatarImage : apiImage
+                        img(src=`${displayImage}` alt=`${tvCredits.cast[count].original_name}`)
+                    div(class="card-text movie-title tv-text-color text-center mt-1")= tvCredits.cast[count].original_name
+                    div(class="card-text movie-release-date tv-text-color text-danger text-center mt-1")= tvCredits.cast[count].roles[0].character
+                    div(class="card-text movie-release-date tv-text-color text-danger text-center mt-1")
+                        span(class="episodes-count text-primary")= tvCredits.cast[count].total_episode_count
+                        span(class="text-info")  Episodes
+    div(class="topTvCrewCast")
+        div(class="h3  tag-info") Top 
+            span(class="popular-tag") Crew
+            | .
+        div(class="flex-items tvCast")
+            - for(let count = 0; count <= 30; count++)
+                div(class="movie-card")
+                    div(class="movie-img-card")
+                        - let profile_path = tvCredits.crew[count].profile_path
+                        - let apiImage = `https://image.tmdb.org/t/p/w500${profile_path}`
+                        - let avatarImage = "https://mir-s3-cdn-cf.behance.net/project_modules/disp/629c1f14015191.5627be627c443.png"
+                        - let displayImage = profile_path == null ? avatarImage : apiImage
+                        img(src=`${displayImage}` alt=`${tvCredits.crew[count].original_name}`)
+                    div(class="card-text movie-release-date text-center mt-1")= tvCredits.crew[count].original_name
+                    div(class="card-text movie-release-date tv-text-color text-danger text-center mt-1")= tvCredits.crew[count].department
+                    div(class="card-text movie-release-date tv-text-color text-danger text-center mt-1")
+                        span(class="episodes-count text-primary")= tvCredits.crew[count].total_episode_count
+                        span(class="text-info")  Episodes
