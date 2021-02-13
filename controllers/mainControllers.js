@@ -57,20 +57,24 @@ module.exports = {
                 movieDetails,
                 similarMovies,
                 movieCredits,
-                youTubeKey: key[0] ?? results.key
+                youTubeKey: key[0] || results[0].key
             })
-            console.log(results.key)
+            console.log(key[0] ?? results[0].key)
 
         }catch(err){
             console.log("Error Occurred While Fetching The Data")
             console.log(err.message)
         }
     },
-    tvDetail: (req, res) => {
+    tvDetail: async (req, res) => {
         const id = req.params.id
 
+        // @ Get Tv Details. 
+        const responseTvDetails = await axios.get(`${process.env.TV_DETAILS_URL}${id}${process.env.TV_DETAILS_REST_URL}`)
+        const TvDetails = responseTvDetails.data
+
         res.render("tv_detail", {
-            
+            TvDetails,
         })
     }
 }
