@@ -39,4 +39,29 @@ block content
                     div(class="card-text movie-title")
                         a(href=`/tv/${movie.id}/` class="decoration-none tv-text-color")= movie.name
                     div(class="card-text movie-release-date tv-text-color")= movie.first_air_date
-    
+    div(class="whatsPopularInTheatres")
+        div(class="h3 tag-info") Trending 
+            span(class="popular-tag") Today
+            | .
+        div(class="flex-items")
+            each movie in trendingToday.results
+                div(class="movie-card")
+                    div(class="movie-img-card")
+                        a(href=`/${movie.media_type}/${movie.id}/`)
+                            img(src=`https://image.tmdb.org/t/p/w500/${movie.poster_path || movie.backdrop_path}`, alt=`${movie.title}`)
+                    div(class="card-text movie-title")
+                        a(href=`/${movie.media_type}/${movie.id}/` class="decoration-none")= movie.title || movie.name
+                    div(class="card-text movie-release-date")= movie.release_date || movie.first_air_date
+    div(class="whatsPopularInTheatres")
+        div(class="h3 tag-info") Trending 
+            span(class="popular-tag") This Week
+            | .
+        div(class="flex-items")
+            each movie in trendingThisWeek.results
+                div(class="movie-card")
+                    div(class="movie-img-card")
+                        a(href=`/${movie.media_type}/${movie.id}/`)
+                            img(src=`https://image.tmdb.org/t/p/w500/${movie.poster_path || movie.backdrop_path}`, alt=`${movie.title}`)
+                    div(class="card-text movie-title")
+                        a(href=`/${movie.media_type}/${movie.id}/` class="decoration-none")= movie.title || movie.name
+                    div(class="card-text movie-release-date")= movie.release_date || movie.first_air_date

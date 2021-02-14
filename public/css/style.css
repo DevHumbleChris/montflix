@@ -81,7 +81,11 @@ body{
     width: 150px;
     
 }
-.movie-img img {
+.currentSeasonInfo{
+    padding: 20px;
+    margin-left: 10px;
+}
+.movie-img img{
     width: 100%;
     border-radius: 10px;
 }
@@ -157,12 +161,15 @@ body{
 .popular-tag{
     color: red;
 }
-.whatsPopularInTheatres, .similarMovies ,.whatsPopularOnTv, .latestTrailersInTheatres, .topMoviesBilledCast, .topTvBilledCast, .topTvCrewCast{
+.whatsPopularInTheatres, .similarMovies ,.whatsPopularOnTv, .latestTrailersInTheatres, .topMoviesBilledCast, .topTvBilledCast, .topTvCrewCast, .currentSeason{
     padding: 15px;
     /* background: red; */
 }
-.whatsPopularOnTv, .topMoviesBilledCast, .topTvBilledCast{
+.whatsPopularOnTv, .topMoviesBilledCast, .topTvBilledCast, .error-div, .currentSeason{
     background-color: #18223C;
+}
+.currentSeasonInfo{
+    color: white;
 }
 .flex-items{
     display: flex;
@@ -221,6 +228,24 @@ body{
 .api-name{
     text-decoration:none;
 }
+.error-div{
+    width: 30rem;
+    margin: auto;
+    padding: 10px;
+    margin-top: 60px;
+    border-radius: 10px;
+}
+.error-img{
+    width: 29rem;
+}
+.error-img img {
+    width: 100%;
+    border-radius: 10px;
+}
+.message{
+    padding: 10px;
+}
+
 /* @ Media Queries */
 
 @media only screen and (max-width: 480px){
@@ -235,5 +260,20 @@ body{
     }
     .movie-detail-title{
         font-size: 20px;
+    }
+    .error-div{
+        width: 25rem;
+    }
+    .error-img{
+        width: 24rem;
+    }
+    .unflex{
+        flex-direction: column;
+        overflow-x: none;
+        overflow-y: auto;
+        align-items: center;
+    }
+    .currentSeasonName, .yearNEpisodesCount, .responsiveCenter{
+        text-align: center;
     }
 }

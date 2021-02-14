@@ -15,15 +15,26 @@ module.exports = {
             // @ Get Popular On Tv
             const responseTvPopular = await axios.get(`${process.env.TV_POPULAR}${pageNo}`)
             const popularOnTv = responseTvPopular.data
+
+            // @ Get Trending Today 
+            const responseTrendingToday = await axios.get(`${process.env.TRENDING_ALL}${process.env.PAGE_QUERY}${pageNo}`)
+            const trendingToday = responseTrendingToday.data
+
+            // @ Get Trending This Week. 
+            const responseTrendingThisWeek = await axios.get(`${process.env.TRENDING_THIS_WEEK}${process.env.PAGE_QUERY}${pageNo}`)
+            const trendingThisWeek = responseTrendingThisWeek.data
     
             res.render("index",{
                 popularMovies,
                 popularOnTv,
-            })
+                trendingToday,
+                trendingThisWeek
+            }) 
         }catch(err){
             console.log("An Error Occurred While Fetching Data.")
             console.log(err.message)
         }
+        console.log(`${process.env.TRENDING_THIS_WEEK}${process.env.PAGE_QUERY}${pageNo}`)
 
     },
     movieDetail: async (req, res) => {
@@ -76,15 +87,26 @@ module.exports = {
             // @ Get Aggregate Credits. 
             const responseAggregateCredits = await axios.get(`${process.env.AGGREGATE_CREDITS}${id}${process.env.AGG_CREDIT_URL}`)
             const tvCredits =responseAggregateCredits.data
+
+            // @ Get Similar Tv Shows. 
+            const responseSimilarShows = await axios.get(`${process.env.SIMILAR_TV_SHOWS}${id}${process.env.SIMILAR_TV_SHOWS_REST_URL}`)
+            const similarShows = responseSimilarShows.data
     
             res.render("tv_detail", {
                 TvDetails,
-                tvCredits
+                tvCredits,
+                similarShows
             })
+            console.log(`${process.env.TV_DETAILS_URL}${id}${process.env.TV_DETAILS_REST_URL}`)
 
         }catch(err){
             console.log(err.message)
         }
-        console.log(`${process.env.AGGREGATE_CREDITS}${id}${process.env.AGG_CREDIT_URL}`)
+    },
+    error404: (req, res, next) => {
+        res.status(404).render("error404")
+    },
+    error500: (err, req, res, next) => {
+        res.status(404).render("error500")
     }
 }

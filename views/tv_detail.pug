@@ -29,6 +29,8 @@ block content
         div(class="tagline") #{TvDetails.tagline}
         div(class="overview") Overview
         div(class="overview-description") #{TvDetails.overview}
+        div(class="overview") Created By
+        div(class="tag-info") #{TvDetails.created_by[0].name}
     div(class="topTvBilledCast")
         div(class="h3 tag-info on-tv-text-color") Top 
             span(class="popular-tag") Series Cast
@@ -52,7 +54,8 @@ block content
             span(class="popular-tag") Crew
             | .
         div(class="flex-items tvCast")
-            - for(let count = 0; count <= 30; count++)
+            - let crewLength = tvCredits.crew.length >= 30 ? 30 : tvCredits.crew.length
+            - for(let count = 0; count < crewLength; count++)
                 div(class="movie-card")
                     div(class="movie-img-card")
                         - let profile_path = tvCredits.crew[count].profile_path
@@ -65,3 +68,29 @@ block content
                     div(class="card-text movie-release-date tv-text-color text-danger text-center mt-1")
                         span(class="episodes-count text-primary")= tvCredits.crew[count].total_episode_count
                         span(class="text-info")  Episodes
+    div(class="currentSeason")
+        div(class="h3 tag-info on-tv-text-color") Current 
+            span(class="popular-tag") Season
+            | .
+        div(class="flex-items unflex currentSeasonInfos")
+            - let currentSeason = TvDetails.seasons.length - 1
+            div(class="movie-img-card center")
+                img(src=`https://image.tmdb.org/t/p/w500${TvDetails.seasons[currentSeason].poster_path}`, alt="")
+            div(class="currentSeasonInfo")
+                div(class="currentSeasonName responsiveCenter tag-info")= TvDetails.seasons[currentSeason].name
+                div(class="yearNEpisodesCount responsiveCenter") #{TvDetails.seasons[currentSeason].air_date} | #{TvDetails.seasons[currentSeason].episode_count} Episodes
+                div(class="overview responsiveCenter") Overview
+                div(class="overview-description responsiveCenter")= TvDetails.seasons[currentSeason].overview
+    div(class="similarMovies")
+        div(class="h3 tag-info") Similar 
+            span(class="popular-tag") Tv Shows
+            | .
+        div(class="flex-items")
+            each tvShows in similarShows.results
+                div(class="movie-card")
+                    div(class="movie-img-card")
+                        a(href=`/tv/${tvShows.id}/`)
+                            img(src=`https://image.tmdb.org/t/p/w500/${tvShows.poster_path || tvShows.backdrop_path}`, alt=`${tvShows.name}`)
+                    div(class="card-text movie-title")
+                        a(href=`/tv/${tvShows.id}/` class="decoration-none")= tvShows.name
+                    div(class="card-text movie-release-date")= tvShows.first_air_date
