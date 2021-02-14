@@ -107,6 +107,6 @@ module.exports = {
         res.status(404).render("error404")
     },
     error500: (err, req, res, next) => {
-        res.status(404).render("error500")
+        res.status(500).render("error500")
     }
 }
