@@ -16,21 +16,14 @@ block content
             - TvDetails.genres.map( (genre) => { genresArray.push(genre.name)})
             - let genre = genresArray.join(", ")
                 span(class="genres")  #{genre}
-        div(class="video-movie-links mt-2 mb-2")
-            a(href=`${TvDetails.homepage}`) 
-                div(class="avatar-icon text-center")
-                    i(class="fas fa-link text-primary mt-3")
-            div(class="margin-ryt")
-                a(href="" class="btn trailer-btn btn-outline-primary mt-2") 
-                    i(class="fas fa-play")
-                    span(class="")  Play Trailer
-            //- div(class="trailer-video")
-            //-     iframe(width="320" height="250" src=`https://www.youtube.com/embed/${youTubeKey}`)
         div(class="tagline") #{TvDetails.tagline}
         div(class="overview") Overview
         div(class="overview-description") #{TvDetails.overview}
         div(class="overview") Created By
         div(class="tag-info") #{TvDetails.created_by[0].name}
+        div(class="overview mt-1") Trailer
+        div(class="trailer-video mt-1")
+            iframe(width="320" height="250" src=`https://www.youtube.com/embed/${youTubeKey}`)
     div(class="topTvBilledCast")
         div(class="h3 tag-info on-tv-text-color") Top 
             span(class="popular-tag") Series Cast
@@ -86,11 +79,18 @@ block content
             span(class="popular-tag") Tv Shows
             | .
         div(class="flex-items")
-            each tvShows in similarShows.results
-                div(class="movie-card")
-                    div(class="movie-img-card")
-                        a(href=`/tv/${tvShows.id}/`)
-                            img(src=`https://image.tmdb.org/t/p/w500/${tvShows.poster_path || tvShows.backdrop_path}`, alt=`${tvShows.name}`)
-                    div(class="card-text movie-title")
-                        a(href=`/tv/${tvShows.id}/` class="decoration-none")= tvShows.name
-                    div(class="card-text movie-release-date")= tvShows.first_air_date
+            if(similarShows.results == "")
+                div(class="no-similars")
+                    div(class="no-similars-img")
+                        img(src="/images/undraw_empty_xct9.png", alt="undraw-empty")
+                    div(class="no-similars-msg")
+                        div(class="tag-info text-center mt-2 text-info") No Similar Tv Shows  Found.
+            else
+                each tvShows in similarShows.results
+                    div(class="movie-card")
+                        div(class="movie-img-card")
+                            a(href=`/tv/${tvShows.id}/`)
+                                img(src=`https://image.tmdb.org/t/p/w500/${tvShows.poster_path || tvShows.backdrop_path}`, alt=`${tvShows.name}`)
+                        div(class="card-text movie-title")
+                            a(href=`/tv/${tvShows.id}/` class="decoration-none")= tvShows.name
+                        div(class="card-text movie-release-date")= tvShows.first_air_date

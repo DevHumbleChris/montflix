@@ -70,7 +70,6 @@ module.exports = {
                 movieCredits,
                 youTubeKey: key[0] || results[0].key
             })
-
         }catch(err){
             console.log("Error Occurred While Fetching The Data")
             console.log(err.message)
@@ -92,12 +91,25 @@ module.exports = {
             const responseSimilarShows = await axios.get(`${process.env.SIMILAR_TV_SHOWS}${id}${process.env.SIMILAR_TV_SHOWS_REST_URL}`)
             const similarShows = responseSimilarShows.data
     
+            // @ Get Tv Video Trailer. 
+            const responseTvTrailer = await axios.get(`${process.env.TV_TRAILER}${id}${process.env.TV_TRAILER_REST_URL}`)
+            const youTubeKeys = responseTvTrailer.data
+
+
+            const results = youTubeKeys.results
+            let key = []
+            for( let x = 0; x < results.length; x++){
+                if(results[x].type == "Trailer"){
+                    key.push(results[x].key)
+                }
+            }
+
             res.render("tv_detail", {
                 TvDetails,
                 tvCredits,
-                similarShows
+                similarShows,
+                youTubeKey: key[0] || results[0].key
             })
-            console.log(`${process.env.TV_DETAILS_URL}${id}${process.env.TV_DETAILS_REST_URL}`)
 
         }catch(err){
             console.log(err.message)

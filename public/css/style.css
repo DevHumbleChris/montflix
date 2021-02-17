@@ -245,6 +245,18 @@ body{
 .message{
     padding: 10px;
 }
+.no-similars{
+    width: 21.5rem;
+    padding: 10px;
+    margin: auto;
+}
+.no-similars-img{
+    width: 20rem;
+}
+.no-similars-img img{
+    width: 100%;
+    border-radius: 10px;
+}
 
 /* @ Media Queries */
 

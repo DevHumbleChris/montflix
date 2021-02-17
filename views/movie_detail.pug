@@ -17,19 +17,12 @@ block content
             - movieDetails.genres.map( (genre) => { genresArray.push(genre.name)})
             - let genre = genresArray.join(", ")
                 span(class="genres")  #{genre}
-        div(class="video-movie-links mt-2 mb-2 text-center")
-            a(href=`${movieDetails.homepage}`) 
-                div(class="avatar-icon")
-                    i(class="fas fa-link text-primary mt-3")
-            div(class="margin-ryt")
-                a(href="" class="btn trailer-btn btn-outline-primary mt-2") 
-                    i(class="fas fa-play")
-                    span(class="")  Play Trailer
-            //- div(class="trailer-video")
-            //-     iframe(width="320" height="250" src=`https://www.youtube.com/embed/${youTubeKey}`)
         div(class="tagline") #{movieDetails.tagline}
         div(class="overview") Overview
         div(class="overview-description") #{movieDetails.overview}
+        div(class="overview mt-1") Trailer
+        div(class="trailer-video mt-1")
+            iframe(width="320" height="250" src=`https://www.youtube.com/embed/${youTubeKey}`)
     div(class="topMoviesBilledCast")
         div(class="h3 tag-info on-tv-text-color") Top 
             span(class="popular-tag") Billed Cast
@@ -46,15 +39,22 @@ block content
                     div(class="card-text movie-title tv-text-color text-center mt-1")= cast.name
                     div(class="card-text movie-release-date tv-text-color text-danger text-center mt-1")= cast.character
     div(class="similarMovies")
-        div(class="h3 tag-info") Similar 
+        div(class="h3 tag-info text-center") Similar 
             span(class="popular-tag") Movies
             | .
         div(class="flex-items")
-            each movie in similarMovies.results
-                div(class="movie-card")
-                    div(class="movie-img-card")
-                        a(href=`/movie/${movie.id}/`)
-                            img(src=`https://image.tmdb.org/t/p/w500/${movie.poster_path || movie.backdrop_path}`, alt=`${movie.title}`)
-                    div(class="card-text movie-title")
-                        a(href=`/movie/${movie.id}/` class="decoration-none")= movie.title
-                    div(class="card-text movie-release-date")= movie.release_date
+            if(similarMovies.results == "")
+                div(class="no-similars")
+                    div(class="no-similars-img")
+                        img(src="/images/undraw_empty_xct9.png", alt="undraw-empty")
+                    div(class="no-similars-msg")
+                        div(class="tag-info text-center mt-2 text-info") No Similar Movies Found.
+            else
+                each movie in similarMovies.results
+                    div(class="movie-card")
+                        div(class="movie-img-card")
+                            a(href=`/movie/${movie.id}/`)
+                                img(src=`https://image.tmdb.org/t/p/w500/${movie.poster_path || movie.backdrop_path}`, alt=`${movie.title}`)
+                        div(class="card-text movie-title")
+                            a(href=`/movie/${movie.id}/` class="decoration-none")= movie.title
+                        div(class="card-text movie-release-date")= movie.release_date
