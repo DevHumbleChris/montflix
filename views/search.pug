@@ -1,0 +1,43 @@
+extends layout 
+
+block content 
+    div(class="form search-form")
+        form(method="POST" action="/search")
+            div(class="input-group mb-3")
+                input(type="text" class="form-control input-search" placeholder="Search for a movie / tv show..." aria-label="searchValue" aria-describedby="basic-addon2" name="searchValue")
+                button( type="submit" class="input-group-text search-btn btn-success" id="basic-addon2") Search
+    div(class="results-container")
+        div(class="detailed-results mb-2")
+            div(class="card shadow")
+                div(class="card-header text-center bg-color tag-info") SEARCH RESULTS
+                - let moviesFound = 0, tvFound = 0;
+                each movie in searchResults.results
+                    - if (movie.media_type == "movie") { moviesFound += 1 }
+                    - if (movie.media_type == "tv") { tvFound += 1 }
+                ul(class="list-group list-group-flush tag-info")
+                    li(class="list-group-item") Movies 
+                        span(class="badge bg-color float-end")= moviesFound
+                    li(class="list-group-item") Series
+                        span(class="badge bg-color float-end")= tvFound
+                    li(class="list-group-item") Total Results
+                        span(class="badge bg-color float-end")= searchResults.total_results
+        div(class="movie-results")
+            each movie in searchResults.results
+                div(class="movie mb-2")
+                    a(href=`/${movie.media_type}/${movie.id}` class="btn-link")
+                        div(class="movie-results-img")
+                            - let no_img_path = "https://blog.stylingandroid.com/wp-content/themes/lontano-pro/images/no-image-slide.png"
+                            - let TMDBImgPath = movie.poster_path || movie.backdrop_path
+                            - let img_path = TMDBImgPath == null ? no_img_path : "https://image.tmdb.org/t/p/w500" + TMDBImgPath
+                                img(src=`${img_path}`, alt=`${movie.title || movie.name}`)
+                    div(class="movie-details tag-info")
+                        a(href=`/${movie.media_type}/${movie.id}` class="btn-link") 
+                            div(class="movie-name") #{movie.title || movie.name} 
+                        div(class="release-date") #{movie.release_date || movie.first_air_date}
+                        - let overviewOfNull = "Overview Not Available" 
+                        - let overview = ""
+                        - if (movie.overview == null) { movie.overview = overviewOfNull }
+                        - let limit = movie.overview.length >= 215 ? 215 : movie.overview.length
+                        - for(let x = 0; x < limit; x++) { overview += movie.overview[x] }
+                        - overview = overview.length >= 215 ? overview + "..."  : overview
+                        div(class="overview-description")= overview

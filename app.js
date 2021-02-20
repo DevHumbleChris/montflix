@@ -18,7 +18,7 @@ app.use(express.static("public"))
 
 // @ Error Handlers. 
 app.use(mainControllers.error404)
-app.use(mainControllers.error500)
+// app.use(mainControllers.error500)
 
 app.listen(PORT, () => {
     console.log(`Montflix Started at http://127.0.0.1:${PORT}`.bold.blue)

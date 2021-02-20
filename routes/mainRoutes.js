@@ -12,6 +12,6 @@ route.get("/movie/:id", mainControllers.movieDetail)
 
 route.get("/tv/:id", mainControllers.tvDetail)
 
-route.post("/", urlEncoded)
+route.post("/search", urlEncoded, mainControllers.search)
 
 module.exports = route;

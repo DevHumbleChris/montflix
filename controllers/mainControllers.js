@@ -115,6 +115,22 @@ module.exports = {
             console.log(err.message)
         }
     },
+    search: async (req, res) => {
+        let query = req.body.searchValue
+
+        try{
+            // @ Get Searched Results. 
+            const responseSearchResults = await axios.get(`${process.env.SEARCH_MOVIES}${query}`)
+            const searchResults = responseSearchResults.data
+            
+            res.render("search", {
+                searchResults,
+            })
+
+        }catch(err){
+            console.log(err.message)
+        }
+    },
     error404: (req, res, next) => {
         res.status(404).render("error404")
     },
