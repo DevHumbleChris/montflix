@@ -3,6 +3,7 @@ require("colors");
 const express = require("express")
 const morgan = require("morgan")
 const path = require("path")
+const ip = require('ip').address()
 
 const app = express()
 const PORT = process.env.PORT ?? 3000
@@ -21,7 +22,11 @@ app.use(mainControllers.error404)
 app.use(mainControllers.error500)
 
 app.listen(PORT, () => {
-    console.log(`Montflix Started at http://127.0.0.1:${PORT}`.bold.blue)
+    console.log(ip)
+    console.log(`
+    Montflix Started at http://127.0.0.1:${PORT}
+    ${ip && `External URL: ${ip}:${PORT}`}
+    `.bold.blue)
 })
 
 module.exports = {
