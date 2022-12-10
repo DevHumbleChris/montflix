@@ -1,5 +1,5 @@
 const IMG_PATH = "https://image.tmdb.org/t/p/w500"
-const TRENDING_TODAY = "https://api.themoviedb.org/3/trending/today/day?api_key=b9326276faf774560703e2e9152fa7e7"
+const TRENDING_TODAY = "https://api.themoviedb.org/3/trending/all/day?api_key=b9326276faf774560703e2e9152fa7e7"
 
 const MOVIE_DETAIL_URL = "https://api.themoviedb.org/3/movie/"
 const MOVIE_DETAIL_REST_URL = "?api_key=b9326276faf774560703e2e9152fa7e7&language=en-US"
@@ -40,7 +40,7 @@ if(movieDetailBanner != null){
             const id = pathname.split("/")[2]
             response = await fetch(`${MOVIE_DETAIL_URL}${id}${MOVIE_DETAIL_REST_URL}`)
             responseData = response.json()
-    
+
             responseData.then( (data) => {
                 movieDetailBanner.style = `
                                 background-image:url(${IMG_PATH}${data.poster_path});
@@ -69,7 +69,7 @@ if(tvDetailBanner != null){
                             background-size: cover;
                             background-position: center;
                             background-repeat: no-repeat;
-                            ` 
+                            `
         })
     }
     getDetailTvImage()
